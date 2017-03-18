@@ -6,8 +6,71 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/bootstrap-theme.css" rel="stylesheet">
     <link href="dist/sweetalert.css" rel="stylesheet">
+    <style media="screen">
+      td,th{
+          height: 50px;
+          text-align: center;
+        }
+    </style>
   </head>
   <body>
+
+    <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#" id="de">Brand</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="warning"><a href="#" id="in">เพิ่มข้อมูล</a></li>
+        <li class="warning"><a href="#" id="se">ดูรายการสินค้า</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" id="ed">แก้ไขข้อมูลสินค้า</a>
+
+        </li>
+      </ul>
+      <form class="navbar-form navbar-left">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-default">ค้นหา</button>
+      </form>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">Link</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+    <!-- <div class="nav nav-tabs" style="margin-left: 60px;margin-top: 20px;">
+      <button type="button" name="button4" class="btn btn-danger" id="de">หน้าแรก</button>
+      <button type="button" name="button1" class="btn btn-warning" >เพิ่มสินค้า</button>
+      <button type="button" name="button2" class="btn btn-success" id="se">ดูรายการสินค้า</button>
+      <button type="button" name="button3" class="btn btn-info" id="ed">แก้ไขสินค้า</button>
+    </div> -->
+
+    <div class="de" style="width: 90%;margin-left: 60px;margin-top: 10px;">
+
+    </div>
     <div class="se" style="width: 90%;margin-left: 60px;margin-top: 10px;">
 
     </div>
@@ -15,23 +78,39 @@
 
     </div>
     <div class="as" style="display:none;">
-      <form class="form-inline" method="post">
-      ProductName  <input type="text" name="productName">
-      ProductCategory <input type="text" name="productType">
-      ProductPrice <input type="text" name="productPrice">
-      ProductQuantity <input type="text" name="productQuantity">
-      <button type="button" name="button6" class="btn btn-warning" id="insert">INSERT</button>
-      </form>
-      <h1 class="result"></h1>
+      <div class="panel panel-warning" style="width: 40%;margin-left: 30%;">
+        <div class="panel-heading">เพื่มข้อมูลสินค้า</div>
+        <div class="panel-body">
+          <form>
+            <div class="form-group">
+              <label for="exampleInputName2">ชื่อสินค้า</label>
+              <input type="text" class="form-control" name="productName" placeholder="กรุณากรอกชื่อสินค้า..." required="">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail2">ประเภทของสินค้า</label>
+              <input type="text" class="form-control" name="productType" placeholder="กรุณากรอกประเภทสินค้า..." required="">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail2">ราคาสินค้า</label>
+              <input type="text" class="form-control" name="productPrice" placeholder="กรุณากรอกราคาสินค้า.." required="">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail2">จำนวสินค้าสินค้า</label>
+              <input type="email" class="form-control" name="productQuantity" placeholder="กรุณากรอกจำนวนสินค้า..." required="">
+            </div>
+            <button type="button" name="button6" class="btn btn-warning" id="insert">Send invitation</button>
+          </form>
+        </div>
+      </div>
     </div>
+
     <div class="mt" style="display: none;width: 90%;margin-left: 60px;margin-top: 10px;">
       <?php
       require('connectdb.php');
       $sql = "SELECT * FROM `product`";
       $result  = $conn->query($sql);
       if ($result->num_rows > 0) {
-        echo "<form>",
-          "<table class='table' border='1'>",
+        echo "<table class='table' border='1'>",
           "<thead>",
           "<tr>",
           "<th>#</th>",
@@ -40,6 +119,7 @@
           "<th>ราคา</th>",
           "<th>จำนวนสินค้า</th>",
           "<th>แก้ไขข้อมูลสินค้า</th>",
+          "<th>ลบรายการสินค้า</th>",
           "</tr>",
           "</thead>";
           while ($row=$result->fetch_assoc()) {
@@ -49,20 +129,14 @@
               "<td>".$row["Catagory"]."</td>",
               "<td>".$row["Price"]."</td>",
               "<td>".$row["Quantity"]."</td>",
-              "<td><button type='button' name='edit' class='btn btn-defualt' value='".$row["ProductID"]."'>แก้ไข</button></td>",
+              "<td><button type='button' name='edit' class='btn btn-primary' value='".$row["ProductID"]."'>แก้ไขข้อมูลสินค้า</button></td>",
+              "<td><button type='button' name='delete' id='delete' class='btn btn-danger' value='".$row["ProductID"]."'>ลบข้อมูลสินค้า</button></td>",
               "</tr>",
               "</tbody>";
           }
           echo "</table>";
-          echo "</form>";
       }
       ?>
-    </div>
-    <div class="" style="margin-left: 60px;margin-top: 20px;">
-      <button type="button" name="button1" class="btn btn-warning" id="in">เพิ่มสินค้า</button>
-      <button type="button" name="button2" class="btn btn-success" id="se">ดูรายการสินค้า</button>
-      <button type="button" name="button3" class="btn btn-info" id="ed">แก้ไขสินค้า</button>
-      <button type="button" name="button4" class="btn btn-danger" id="de">ลบสินค้า</button>
     </div>
 
       <script src="js/jquery.js"></script>
@@ -72,6 +146,7 @@
       <script src="dist/sweetalert.min.js" charset="utf-8"></script>
       <script type="text/javascript">
         $(document).ready(function(){
+          //insertข้อมูล
           $('#insert').click(function(){
               var ProductName = $("input[name='productName']").val();
               var Type = $("input[name='productType']").val();
@@ -99,12 +174,11 @@
                   },
                   function(){
                     swal("Insert!", "Your imaginary file has been Insert.", "success");
-                    location.reload();
                   });
                 }
               });
-
           });
+          //Updateข้อมูล
           $('.ed').on('click','#mat',function(){
               $('.ed').css("display","block");
               $('.as').css("display","none");
@@ -127,8 +201,7 @@
                   showCancelButton: true,
                   closeOnConfirm: false,
                   showLoaderOnConfirm: true,
-                },
-                function(){
+                },function(){
                   setTimeout(function(){
                     swal("ยินดีที่ได้รู้จัก!");
                   }, 2000);
@@ -144,6 +217,7 @@
             $('.ed').css("display","none");
             $('.mt').css("display","none");
           });
+          //Selectข้อมูล
           $('#se').click(function(){
             $('.se').css("display","block");
             $('.as').css("display","none");
@@ -161,7 +235,7 @@
             $('.as').css("display","none");
             $('.se').css("display","none");
           });
-          $('.btn-defualt').click(function(){
+          $('.btn-primary').click(function(){
             var value = $(this).val();
             $('.ed').css("display","block");
             $('.mt').css("display","none");
@@ -179,6 +253,35 @@
               }
             });
           });
+          //ลบข้อมูล
+          $('.mt').on('click','#delete',function(){
+            $('.delete').css("display","block");
+            $('.mt').css("display","none");
+            $('.as').css("display","none");
+            $('.se').css("display","none");
+            $('.ed').css("display","none");
+            var value = $(this).val();
+            $.ajax({
+              url : "delete.php",
+              type : "POST",
+              data : {id:value},
+              success : function(result){
+                swal({
+                  title: result,
+                  text: "You won't be able to revert this!",
+                  type: 'warning',
+                  showCancelButton: true,
+                  confirmButtonColor: '#3085d6',
+                  cancelButtonColor: '#d33',
+                  confirmButtonText: 'Yes, delete it!'
+                });
+                  $('button[name="delete"]').val("");
+              }
+          });
+        });
+        $('#de').click(function(){
+          location.reload();
+        });
       });
       </script>
   </body>
