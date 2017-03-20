@@ -2,14 +2,25 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Insert Data !</title>
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/bootstrap-theme.css" rel="stylesheet">
+    <title>Insert To Data !</title>
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/bootstrap-theme.css" rel="stylesheet">
     <link href="dist/sweetalert.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+    <!-- <link rel="stylesheet" href="assets/css/main.css" /> -->
+		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+
     <style media="screen">
       td,th{
           height: 50px;
           text-align: center;
+        }
+        nav{
+          margin-top: 5px;
+        }
+        body{
+          background-image: url("images/bg.jpg");
         }
     </style>
   </head>
@@ -17,7 +28,7 @@
 
     <nav class="navbar navbar-default">
   <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
+
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
         <span class="sr-only">Toggle navigation</span>
@@ -25,10 +36,10 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#" id="de">Brand</a>
+      <a class="navbar-brand" href="index_2.html" id="de">Brand</a>
     </div>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
+
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li class="warning"><a href="#" id="in">เพิ่มข้อมูล</a></li>
@@ -45,20 +56,30 @@
         <button type="submit" class="btn btn-default">ค้นหา</button>
       </form>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Link</a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-          </ul>
-        </li>
+        <li><a href="#">Sign Up</a></li>
+        <li><a href="#">Log In</a></li>
+        <li class = "dropdown">
+            <a href = "#" class = "dropdown-toggle" data-toggle = "dropdown">
+               Java
+               <b class = "caret"></b>
+            </a>
+
+            <ul class = "dropdown-menu">
+               <li><a href = "#">jmeter</a></li>
+               <li><a href = "#">EJB</a></li>
+               <li><a href = "#">Jasper Report</a></li>
+
+               <li class = "divider"></li>
+               <li><a href = "#">Separated link</a></li>
+
+               <li class = "divider"></li>
+               <li><a href = "#">One more separated link</a></li>
+            </ul>
+
+         </li>
       </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
+    </div>
+  </div>
 </nav>
 
     <!-- <div class="nav nav-tabs" style="margin-left: 60px;margin-top: 20px;">
@@ -139,11 +160,22 @@
       ?>
     </div>
 
-      <script src="js/jquery.js"></script>
-      <script src="js/bootstrap.js" charset="utf-8"></script>
-      <script src="js/bootstrap.min.js" charset="utf-8"></script>
+      <!-- Bootstrap -->
+
+
+      <script src="assets/js/jquery-3.1.1.slim.min.js"></script>
+      <script src="assets/js/jquery-3.1.1.min.js" charset="utf-8"></script>
+			
+      <script src="assets/js/bootstrap.js" charset="utf-8"></script>
+      <script src="assets/js/bootstrap.min.js" charset="utf-8"></script>
+
+      <!-- sweetalert -->
+
       <script src="dist/sweetalert-dev.js"></script>
       <script src="dist/sweetalert.min.js" charset="utf-8"></script>
+
+      <!-- function_Insert_Update_Delete -->
+
       <script type="text/javascript">
         $(document).ready(function(){
           //insertข้อมูล
@@ -235,6 +267,7 @@
             $('.as').css("display","none");
             $('.se').css("display","none");
           });
+          // selectข้อมูลเพื่อทำการ Update ข้อมูลเก่า
           $('.btn-primary').click(function(){
             var value = $(this).val();
             $('.ed').css("display","block");
