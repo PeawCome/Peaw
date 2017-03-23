@@ -3,10 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Insert To Data !</title>
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
-    <link href="assets/css/bootstrap-theme.css" rel="stylesheet">
-    <link href="dist/sweetalert.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <style media="screen">
       td,th{
@@ -90,25 +87,25 @@
       <div class="form-group">
         <label for="inputEmail3" class="col-sm-2 control-label">ชื่อ</label>
         <div class="col-sm-8">
-          <input type="text" class="form-control" name="UserName" id="inputEmail3" placeholder="UserName">
+          <input type="text" class="form-control" name="UserName" placeholder="UserName">
         </div>
       </div>
       <div class="form-group">
         <label for="inputPassword3" class="col-sm-2 control-label">รหัสผ่าน</label>
         <div class="col-sm-8">
-          <input type="password" class="form-control" name="Password" id="inputPassword3" placeholder="Password">
+          <input type="password" class="form-control" name="Password" placeholder="Password">
         </div>
       </div>
       <div class="form-group">
         <label for="inputTel3" class="col-sm-2 control-label">เบอร์โทรศัพท์</label>
         <div class="col-sm-8">
-          <input type="text" class="form-control" name="Tel" id="inputTel3" placeholder="Tel">
+          <input type="text" class="form-control" name="Tel" placeholder="Tel">
         </div>
       </div>
       <div class="form-group">
         <label for="inputEmail3" class="col-sm-2 control-label">อีเมลล์</label>
         <div class="col-sm-8">
-          <input type="email" class="form-control" name="Email" id="inputEmail3" placeholder="Email">
+          <input type="email" class="form-control" name="Email" placeholder="Email">
         </div>
       </div>
       <div class="form-group">
@@ -125,13 +122,13 @@
         <div class="form-group">
           <label for="inputEmail3" class="col-sm-2 control-label">UserName</label>
           <div class="col-sm-8">
-            <input type="text" class="form-control" name="UserName1" id="inputEmail3" placeholder="UserName">
+            <input type="text" class="form-control" name="UserName" placeholder="UserName">
           </div>
         </div>
         <div class="form-group">
           <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
           <div class="col-sm-8">
-            <input type="password" class="form-control" name="Password1" id="inputPassword3" placeholder="Password">
+            <input type="password" class="form-control" name="Password" placeholder="Password">
           </div>
         </div>
         <div class="form-group">
@@ -219,16 +216,7 @@
 
     </div>
 
-      <!-- Bootstrap -->
-      <script src="assets/js/jquery-3.1.1.slim.min.js"></script>
-      <script src="assets/js/jquery-3.1.1.min.js" charset="utf-8"></script>
-
-      <script src="assets/js/bootstrap.js" charset="utf-8"></script>
-      <script src="assets/js/bootstrap.min.js" charset="utf-8"></script>
-
-      <!-- sweetalert -->
-      <script src="dist/sweetalert-dev.js"></script>
-      <script src="dist/sweetalert.min.js" charset="utf-8"></script>
+      <script src="jQuery/jquery-3.1.1.min.js" charset="utf-8"></script>
 
       <!-- function_Insert_Update_Delete -->
 
@@ -259,11 +247,9 @@
                     confirmButtonColor: "#DD6B55",
                     confirmButtonText: "Yes, Insert it!",
                     closeOnConfirm: false
-                  },
-                  function(){
-                    swal("Insert!", "Your imaginary file has been Insert.", "success");
                   });
                 }
+                location.reload();
               });
           });
           //Updateข้อมูล
@@ -375,11 +361,10 @@
         });
         //function login
         $('#id_signup').click(function(){
-          var value = $(this).val();
-          var UserName = $("input[name='UserName']").val();
-          var Password = $("input[name='Password']").val();
-          var Tel = $("input[name='Tel']").val();
-          var Email = $("input[name='Email']").val();
+          var UserName = $('input[name="UserName"]').val();
+          var Password = $('input[name="Password"]').val();
+          var Tel = $('input[name="Tel"]').val();
+          var Email = $('input[name="Email"]').val();
           var status = 1;
           $.ajax({
             url : "login.php",
@@ -398,25 +383,20 @@
               });
               console.log(result);
               $('.default').html(result);
-              $("input[name='UserName']").val("");
-              $("input[name='Password']").val("");
-              $("input[name='Tel']").val("");
-              $("input[name='Email']").val("");
+              $('input[name="UserName"]').val("");
+              $('input[name="Password"]').val("");
+              $('input[name="Tel"]').val("");
+              $('input[name="Email"]').val("");
             }
           });
         });
 
         $('#id_signin').click(function(){
           var status = 2;
-          var UserName = $("input[name='UserName1']").val();
-          var Password = $("input[name='Password1']").val();
-          var Tel = $("input[name='Tel']").val();
-          var Email = $("input[name='Email']").val();
-
           $.ajax({
             url : "login.php",
             type : "POST",
-            data : {status:status,UserName:UserName,Password:Password,Tel:Tel,Email:Email},
+            data : {status:status},
             success : function(result){
               swal({
                 title: result,
@@ -429,10 +409,6 @@
               });
                 $('.default').html(result);
                 console.log(result);
-                $("input[name='UserName1']").val("");
-                $("input[name='Password1']").val("");
-                $("input[name='Tel']").val("");
-                $("input[name='Email']").val("");
             }
           });
         });

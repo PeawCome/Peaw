@@ -1,7 +1,7 @@
 <?php
 require('connectdb.php');
 $status = $_POST['status'];
-$UserName = $_POST['UserName'];
+$UserName = ;
 $Password = $_POST['Password'];
 $Tel = $_POST['Tel'];
 $Email = $_POST['Email'];
