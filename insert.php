@@ -3,19 +3,13 @@
   <head>
     <meta charset="utf-8">
     <title>Insert To Data !</title>
-    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="jQuery/dist/sweetalert.min.js">
     <style media="screen">
-      td,th{
-          height: 50px;
-          text-align: center;
-        }
-        nav{
-          margin-top: 5px;
-        }
-        /*body{
-          background-image: url("images/bg.jpg");
-        }*/
+      th,td{
+        height: 50px;
+        text-align: center;
+      }
     </style>
   </head>
   <body>
@@ -215,9 +209,12 @@
     <div class="default">
 
     </div>
+    <!-- Scripts -->
+		<script src="jQuery/jquery-3.1.1.min.js" charset="utf-8"></script>
+    <script src="bootstrap/js/bootstrap.js" charset="utf-8"></script>
+    <script src="bootstrap/js/bootstrap.min.js" charset="utf-8"></script>
 
-      <script src="jQuery/jquery-3.1.1.min.js" charset="utf-8"></script>
-
+    <script src="jQuery/dist/sweetalert.min.js"></script>
       <!-- function_Insert_Update_Delete -->
 
       <script type="text/javascript">
@@ -249,7 +246,6 @@
                     closeOnConfirm: false
                   });
                 }
-                location.reload();
               });
           });
           //Updateข้อมูล
@@ -358,6 +354,10 @@
         $('.cd-signin').click(function(){
           $('.log-in').css("display","block");
           $('.sign-up').css("display","none");
+          $('.mt').css("display","none");
+          $('.as').css("display","none");
+          $('.se').css("display","none");
+          $('.ed').css("display","none");
         });
         //function login
         $('#id_signup').click(function(){
@@ -415,6 +415,10 @@
         $('.cd-signup').click(function(){
           $('.sign-up').css("display","block");
           $('.log-in').css("display","none");
+          $('.mt').css("display","none");
+          $('.as').css("display","none");
+          $('.se').css("display","none");
+          $('.ed').css("display","none");
         });
         $('#de').click(function(){
           location.reload();
