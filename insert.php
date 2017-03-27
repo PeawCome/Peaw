@@ -44,8 +44,6 @@
         <button type="submit" class="btn btn-default">ค้นหา</button>
       </form>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#" class="cd-signup">Sign Up</a></li>
-        <li><a href="#" class="cd-signin">Log In</a></li>
         <li class = "dropdown">
             <a href = "#" class = "dropdown-toggle" data-toggle = "dropdown">
                Java
@@ -76,64 +74,6 @@
       <button type="button" name="button2" class="btn btn-success" id="se">ดูรายการสินค้า</button>
       <button type="button" name="button3" class="btn btn-info" id="ed">แก้ไขสินค้า</button>
     </div> -->
-    <div class="sign-up" style="display:none;width: 40%;margin-left: 30%;">
-      <form class="form-horizontal">
-      <div class="form-group">
-        <label for="inputEmail3" class="col-sm-2 control-label">ชื่อ</label>
-        <div class="col-sm-8">
-          <input type="text" class="form-control" name="UserName" placeholder="UserName">
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="inputPassword3" class="col-sm-2 control-label">รหัสผ่าน</label>
-        <div class="col-sm-8">
-          <input type="password" class="form-control" name="Password" placeholder="Password">
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="inputTel3" class="col-sm-2 control-label">เบอร์โทรศัพท์</label>
-        <div class="col-sm-8">
-          <input type="text" class="form-control" name="Tel" placeholder="Tel">
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="inputEmail3" class="col-sm-2 control-label">อีเมลล์</label>
-        <div class="col-sm-8">
-          <input type="email" class="form-control" name="Email" placeholder="Email">
-        </div>
-      </div>
-      <div class="form-group">
-        <div class="col-sm-offset-2 col-sm-10">
-          <button type="submit" class="btn btn-default" id="id_signup">Sign Up</button>
-          <button type="close" class="btn btn-danger">Close</button>
-        </div>
-      </div>
-    </form>
-    </div>
-
-    <div class="log-in" style="display:none;width: 40%;margin-left: 30%;">
-      <form class="form-horizontal">
-        <div class="form-group">
-          <label for="inputEmail3" class="col-sm-2 control-label">UserName</label>
-          <div class="col-sm-8">
-            <input type="text" class="form-control" name="UserName" placeholder="UserName">
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
-          <div class="col-sm-8">
-            <input type="password" class="form-control" name="Password" placeholder="Password">
-          </div>
-        </div>
-        <div class="form-group">
-          <div class="col-sm-offset-2 col-sm-10">
-            <button type="submit" class="btn btn-info" id="id_signin">Sign in</button>
-            <button type="close" class="btn btn-danger">Close</button>
-          </div>
-        </div>
-      </form>
-    </div>
-
 
     <div class="de" style="width: 90%;margin-left: 60px;margin-top: 10px;">
 
@@ -349,79 +289,6 @@
                   $('button[name="delete"]').val("");
               }
           });
-        });
-
-        $('.cd-signin').click(function(){
-          $('.log-in').css("display","block");
-          $('.sign-up').css("display","none");
-          $('.mt').css("display","none");
-          $('.as').css("display","none");
-          $('.se').css("display","none");
-          $('.ed').css("display","none");
-        });
-        //function login
-        $('#id_signup').click(function(){
-          var UserName = $('input[name="UserName"]').val();
-          var Password = $('input[name="Password"]').val();
-          var Tel = $('input[name="Tel"]').val();
-          var Email = $('input[name="Email"]').val();
-          var status = 1;
-          $.ajax({
-            url : "login.php",
-            type : "POST",
-            data : {status:status,UserName:UserName,Password:Password,Tel:Tel,Email:Email},
-            success : function(result){
-
-              swal({
-                title: result,
-                text: "You won't be able to revert this!",
-                type: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, Sign Up it!'
-              });
-              console.log(result);
-              $('.default').html(result);
-              $('input[name="UserName"]').val("");
-              $('input[name="Password"]').val("");
-              $('input[name="Tel"]').val("");
-              $('input[name="Email"]').val("");
-            }
-          });
-        });
-
-        $('#id_signin').click(function(){
-          var status = 2;
-          $.ajax({
-            url : "login.php",
-            type : "POST",
-            data : {status:status},
-            success : function(result){
-              swal({
-                title: result,
-                text: "You won't be able to revert this!",
-                type: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, login it!'
-              });
-                $('.default').html(result);
-                console.log(result);
-            }
-          });
-        });
-        $('.cd-signup').click(function(){
-          $('.sign-up').css("display","block");
-          $('.log-in').css("display","none");
-          $('.mt').css("display","none");
-          $('.as').css("display","none");
-          $('.se').css("display","none");
-          $('.ed').css("display","none");
-        });
-        $('#de').click(function(){
-          location.reload();
         });
       });
       </script>

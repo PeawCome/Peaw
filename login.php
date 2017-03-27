@@ -1,23 +1,24 @@
 <?php
 require('connectdb.php');
 $status = $_POST['status'];
-$UserName = ;
-$Password = $_POST['Password'];
-$Tel = $_POST['Tel'];
-$Email = $_POST['Email'];
+$inputUserName = $_POST['inputUserName'];
+$inputPassword = $_POST['inputPassword'];
+$inputTel = $_POST['inputTel'];
+$inputEmail = $_POST['inputEmail'];
+$inputName = $_POST['inputName'];
+$inputPass = $_POST['inputPass'];
 
 if($status==1){
 
-  $sql = "INSERT INTO login (UserName, Password, Tel, Email) VALUES ('".$UserName."','".$Password."','".$Tel."','".$Email."')";
+  $sql = "INSERT INTO login (UserName, Password, Tel, Email) VALUES ('".$inputUserName."','".$inputPassword."','".$inputTel."','".$inputEmail."')";
   if($conn ->query($sql)===TRUE){
     echo "สมัครเรียบร้อยแล้ว...";
   }else{
     echo "สมัครไม่สำเร็จโปรดทำรายการใหม่อีกครั้ง...";
   }
 }else{
-  $sql = "SELECT * FROM login WHERE UserName = '".$UserName."', Password = '".$Password."'";
-  echo "=".$sql;
-  if($conn ->query($sql)===TRUE){
+  $sql = "SELECT * FROM login WHERE UserName = '".$inputName."' AND Password = '".$inputPass."'";
+  if($conn->query($sql)){
 
     echo "ล็อกอินสำเร็จ...";
 
